@@ -36,7 +36,14 @@ class EntryViewModel(
         )
     }
 
-
+    /* Fungsi untuk menyimpan data yang di-entry */
+    fun saveSiswa() {
+        if (validasiInput()) {
+            viewModelScope.launch {
+                repositoriSiswa.insertSiswa(uiStateSiswa.detailSiswa.toSiswa())
+            }
+        }
+    }
 }
 
 
