@@ -6,5 +6,8 @@ interface DestinasiNavigasi {
      */
     val route: String
 
-
+    /**
+     * Judul yang akan ditampilkan di layar halaman.
+     */
+    val title: String
 }
