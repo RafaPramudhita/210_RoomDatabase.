@@ -87,4 +87,54 @@ fun EntrySiswaBody(
     }
 }
 
+@Composable
+fun FormInputSiswa(
+    detailSiswa: DetailSiswa,
+    modifier: Modifier = Modifier,
+    onValueChange: (DetailSiswa) -> Unit = {},
+    enabled: Boolean = true
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        OutlinedTextField(
+            value = detailSiswa.nama,
+            onValueChange = { onValueChange(detailSiswa.copy(nama = it)) },
+            label = { Text(text = "Nama Siswa") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailSiswa.alamat,
+            onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
+            label = { Text(text = "Alamat Siswa") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailSiswa.telpon,
+            onValueChange = { onValueChange(detailSiswa.copy(telpon = it)) },
+            label = { Text(text = "Telpon Siswa") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
+        )
 
+        if (enabled) {
+            Text(
+                text = "* required fields",
+                modifier = Modifier.padding(start = 16.dp)
+            )
+        }
+
+        HorizontalDivider(
+            modifier = Modifier.padding(bottom = 16.dp),
+            thickness = 1.dp,
+            color = Color.Blue
+        )
+    }
+}
